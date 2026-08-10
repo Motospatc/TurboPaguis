@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datos de pago</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .tarjeta {
+      background: white;
+      width: 90%;
+      max-width: 420px;
+      padding: 30px 20px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 0;
+      color: #d40000;
+    }
+
+    .cuenta {
+      background: #f0f0f0;
+      padding: 18px 10px;
+      border-radius: 12px;
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin: 20px 0;
+      word-break: break-all;
+    }
+
+    button {
+      background: #d40000;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    #mensaje {
+      margin-top: 15px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="tarjeta">
+    <h1>Datos de pago</h1>
+
+    <p>Cuenta bancaria:</p>
+
+    <div class="cuenta" id="numeroCuenta">
+      012180015149851178
+    </div>
+
+    <button onclick="copiarCuenta()">
+      COPIAR CUENTA
+    </button>
+
+    <div id="mensaje"></div>
+  </div>
+
+  <script>
+    function copiarCuenta() {
+      const cuenta = document.getElementById("numeroCuenta").innerText;
+
+      navigator.clipboard.writeText(cuenta).then(function() {
+        document.getElementById("mensaje").innerText =
+          "✓ Cuenta copiada correctamente";
+      }).catch(function() {
+        document.getElementById("mensaje").innerText =
+          "No se pudo copiar automáticamente";
+      });
+    }
+  </script>
+
+</body>
+</html>
